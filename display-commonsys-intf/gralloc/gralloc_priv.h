@@ -86,6 +86,8 @@ inline int roundUpToPageSize(int x) {
 /* This flag is set while CDSP accesses the buffer */
 #define GRALLOC_USAGE_PRIVATE_CDSP 1ULL << 50
 
+/* This flag indicates PI format is being used */
+#define GRALLOC_USAGE_PRIVATE_ALLOC_UBWC_PI 1ULL << 49
 /* Legacy gralloc1 definitions */
 /* Some clients may still be using the old flags */
 #define GRALLOC1_PRODUCER_USAGE_PRIVATE_ADSP_HEAP GRALLOC_USAGE_PRIVATE_ADSP_HEAP
