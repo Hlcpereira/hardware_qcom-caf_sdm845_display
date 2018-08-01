@@ -264,7 +264,6 @@ Return<void> QtiMapper::createDescriptor_2_1(const BufferDescriptorInfo_2_1& des
   return Void();
 }
 
-#ifdef ENABLE_QTI_MAPPER_EXTENSION
 Return<void> QtiMapper::getMapSecureBufferFlag(void *buffer, getMapSecureBufferFlag_cb hidl_cb) {
   auto err = Error::BAD_BUFFER;
   auto hnd = static_cast<private_handle_t *>(buffer);
@@ -381,7 +380,6 @@ Return<Error> QtiMapper::setSingleBufferMode(void *buffer, bool enable) {
   }
   return err;
 }
-#endif
 
 // Methods from ::android::hidl::base::V1_0::IBase follow.
 
@@ -391,6 +389,11 @@ IMapper_2_1 *HIDL_FETCH_IMapper(const char * /* name */) {
   ALOGD_IF(DEBUG, "Fetching IMapper from QtiMapper");
   auto mapper = new QtiMapper();
   return static_cast<IMapper_2_1 *>(mapper);
+}
+
+IQtiMapper *HIDL_FETCH_IQtiMapper(const char * /* name */) {
+  ALOGD_IF(DEBUG, "Fetching QtiMapper");
+  return new QtiMapper();
 }
 
 }  // namespace implementation
